@@ -32,7 +32,11 @@ const suggestedQuestions = [
   "What role is Joshua currently looking for?",
 ];
 
-function getIntroMessage(developerName: string): string {
+function getIntroMessage(developerName: string, isLauncher: boolean): string {
+  if (isLauncher) {
+    return `Hi, I'm ${developerName}'s AI assistant. Ask about projects, stack, experience, or career focus.`;
+  }
+
   return `Hi, I'm ${developerName}'s AI assistant. Ask about projects, experience, technical strengths, or current career focus.`;
 }
 
@@ -51,7 +55,7 @@ export default function Chatbox({
   const isEmbedded = mode === "embedded";
   const isLauncher = mode === "launcher";
   const suggestionItems = isLauncher ? suggestedQuestions.slice(0, 2) : suggestedQuestions;
-  const introMessage = getIntroMessage(developerName);
+  const introMessage = getIntroMessage(developerName, isLauncher);
   const isChatDisabled = assistantState !== "ready" || sessionDisabled;
   const canSubmit = useMemo(
     () => input.trim().length > 0 && !loading && !isChatDisabled,
