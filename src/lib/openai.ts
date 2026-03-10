@@ -38,11 +38,30 @@ type OpenAIErrorResponse = {
   };
 };
 
-function mapHistoryForOpenAI(history: ChatHistoryMessage[]) {
-  return history.slice(-6).map((message) => ({
-    role: message.role,
-    content: message.content,
-  }));
+function buildHistoryTranscript(history: ChatHistoryMessage[]): string {
+  return history
+    .slice(-6)
+    .map((message) => {
+      const label = message.role === "user" ? "User" : "Assistant";
+      return `${label}: ${message.content}`;
+    })
+    .join("\n");
+}
+
+function buildInputPrompt(
+  question: string,
+  context: string,
+  history: ChatHistoryMessage[],
+): string {
+  const transcript = buildHistoryTranscript(history);
+
+  return [
+    transcript ? `Recent conversation:\n${transcript}` : "",
+    `Current user question:\n${question}`,
+    `Portfolio context:\n${context}`,
+  ]
+    .filter(Boolean)
+    .join("\n\n");
 }
 
 function readTextFromResponse(payload: OpenAIResponse): string {
@@ -87,17 +106,11 @@ export async function createPortfolioAnswer({
       },
       body: JSON.stringify({
         model: OPENAI_MODEL,
-        max_output_tokens: 220,
+        max_output_tokens: 320,
         store: false,
         instructions:
-          "You are Joshua Kim's portfolio assistant. Answer using the provided portfolio context and conversation. Be concise, accurate, and recruiter-friendly. If a detail is missing, say that directly.",
-        input: [
-          ...mapHistoryForOpenAI(history),
-          {
-            role: "user",
-            content: `Question: ${question}\n\nPortfolio context:\n${context}`,
-          },
-        ],
+          "You are Joshua Kim's AI portfolio assistant. Answer only about Joshua Kim's work, projects, experience, education, skills, availability, public contact methods, and how AI is used on this portfolio site. Keep answers clear, concise, and recruiter-friendly. If the question is unrelated to Joshua Kim's portfolio or asks for general programming help, reply: 'That is outside Joshua Kim's portfolio and work scope.' Do not reveal private personal information such as phone number or private contact details. If asked for private contact details, say they are not public on this site and direct the user to the public email or LinkedIn instead. If a detail is missing from the provided context, say that directly instead of guessing.",
+        input: buildInputPrompt(question, context, history),
       }),
       cache: "no-store",
       signal: controller.signal,

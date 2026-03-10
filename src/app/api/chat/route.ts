@@ -14,6 +14,16 @@ type ChatRequest = {
   }>;
 };
 
+function getGuardedAnswer(message: string): string | null {
+  const normalizedMessage = message.toLowerCase();
+
+  if (/\b(phone|number|mobile|cell|call)\b/.test(normalizedMessage)) {
+    return "Joshua's phone number is not public on this site. Please use the public email or LinkedIn contact instead.";
+  }
+
+  return null;
+}
+
 function sanitizeHistory(history: ChatRequest["history"]): ChatHistoryMessage[] {
   if (!Array.isArray(history)) {
     return [];
@@ -45,6 +55,12 @@ export async function POST(request: Request) {
       );
     }
 
+    const guardedAnswer = getGuardedAnswer(message);
+
+    if (guardedAnswer) {
+      return NextResponse.json({ answer: guardedAnswer, source: "policy" });
+    }
+
     const history = sanitizeHistory(payload.history);
     const apiKey = process.env.OPENAI_API_KEY?.trim();
 
@@ -56,7 +72,7 @@ export async function POST(request: Request) {
     }
 
     try {
-      const context = buildContext(message);
+      const context = buildContext(message, 6);
       const answer = await createPortfolioAnswer({
         question: message,
         context,
