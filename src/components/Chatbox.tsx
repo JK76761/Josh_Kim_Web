@@ -18,6 +18,10 @@ type ChatPayload = {
   error?: string;
 };
 
+type ChatStatusPayload = {
+  configured?: boolean;
+};
+
 const suggestedQuestions = [
   "How is AI used in this portfolio?",
   "What technologies does Joshua use most?",
@@ -25,40 +29,71 @@ const suggestedQuestions = [
   "What role is Joshua currently looking for?",
 ];
 
+function getIntroMessage(developerName: string, configured: boolean): string {
+  return configured
+    ? `Hi, I'm ${developerName}'s AI portfolio assistant. Ask about projects, experience, skills, or how AI is used in this site.`
+    : "Live OpenAI chat is currently disabled. Add OPENAI_API_KEY to .env.local or Vercel project settings to enable it.";
+}
+
 export default function Chatbox({
   developerName,
   isConfigured,
   mode = "full",
 }: ChatboxProps) {
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      role: "assistant",
-      content: isConfigured
-        ? `Hi, I'm ${developerName}'s AI portfolio assistant. Ask about projects, experience, skills, or how AI is used in this site.`
-        : "Live OpenAI chat is currently disabled. Add OPENAI_API_KEY to .env.local or Vercel project settings to enable it.",
-    },
-  ]);
+  const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [runtimeConfigured, setRuntimeConfigured] = useState(isConfigured);
   const endOfMessagesRef = useRef<HTMLDivElement | null>(null);
 
   const canSubmit = useMemo(
-    () => isConfigured && input.trim().length > 0 && !loading,
-    [input, isConfigured, loading],
+    () => runtimeConfigured && input.trim().length > 0 && !loading,
+    [input, loading, runtimeConfigured],
   );
   const isEmbedded = mode === "embedded";
   const isLauncher = mode === "launcher";
-  const suggestionItems = isLauncher ? suggestedQuestions.slice(0, 3) : suggestedQuestions;
+  const suggestionItems = isLauncher ? suggestedQuestions.slice(0, 2) : suggestedQuestions;
+  const introMessage = getIntroMessage(developerName, runtimeConfigured);
 
   useEffect(() => {
     endOfMessagesRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, loading]);
 
+  useEffect(() => {
+    let isCancelled = false;
+
+    async function loadStatus() {
+      try {
+        const response = await fetch("/api/chat/status", {
+          cache: "no-store",
+        });
+
+        if (!response.ok) {
+          return;
+        }
+
+        const payload = (await response.json()) as ChatStatusPayload;
+
+        if (!isCancelled && typeof payload.configured === "boolean") {
+          setRuntimeConfigured(payload.configured);
+        }
+      } catch {
+        // Keep the server-provided fallback state if status lookup fails.
+      }
+    }
+
+    void loadStatus();
+
+    return () => {
+      isCancelled = true;
+    };
+  }, []);
+
   async function sendMessage(content: string) {
     const trimmed = content.trim();
 
-    if (!trimmed || loading || !isConfigured) {
+    if (!trimmed || loading || !runtimeConfigured) {
       return;
     }
 
@@ -126,6 +161,7 @@ export default function Chatbox({
 
   return (
     <section
+      data-chat-mode={mode}
       className={`chat-shell ${
         isLauncher ? "p-3 sm:p-4" : isEmbedded ? "p-4" : "p-4 sm:p-6"
       }`}
@@ -136,7 +172,7 @@ export default function Chatbox({
             key={question}
             type="button"
             onClick={() => sendMessage(question)}
-            disabled={!isConfigured || loading}
+            disabled={!runtimeConfigured || loading}
             className="chat-chip px-3 py-1 text-xs font-semibold"
           >
             {question}
@@ -147,13 +183,17 @@ export default function Chatbox({
       <div
         className={`chat-thread overflow-y-auto rounded-2xl p-4 ${
           isLauncher
-            ? "h-[280px] sm:h-[320px]"
+            ? "h-[220px] sm:h-[300px]"
             : isEmbedded
               ? "h-[360px]"
               : "h-[460px] sm:p-5"
         }`}
       >
         <div className="space-y-4">
+          <div data-role="assistant" className="chat-message text-sm">
+            {introMessage}
+          </div>
+
           {messages.map((message, index) => (
             <div
               key={`${message.role}-${index}`}
@@ -193,17 +233,23 @@ export default function Chatbox({
             }
           }}
           rows={isLauncher ? 2 : isEmbedded ? 2 : 3}
-          disabled={!isConfigured}
+          disabled={!runtimeConfigured}
           placeholder={
-            isConfigured
+            runtimeConfigured
               ? "Ask about Joshua's projects, stack, experience, or AI integration..."
               : "Set OPENAI_API_KEY to enable live assistant mode."
           }
           className="chat-textarea w-full resize-none rounded-2xl px-4 py-3 text-sm outline-none transition"
         />
 
-        <div className="flex items-center justify-between gap-3">
-          <p className="text-xs text-slate-500">Shift + Enter for a new line.</p>
+        <div
+          className={`flex gap-3 ${
+            isLauncher ? "justify-end" : "items-center justify-between"
+          }`}
+        >
+          {!isLauncher ? (
+            <p className="text-xs text-slate-500">Shift + Enter for a new line.</p>
+          ) : null}
           <button
             type="submit"
             disabled={!canSubmit}

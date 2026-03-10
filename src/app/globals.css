@@ -782,6 +782,7 @@ a {
   bottom: 5.4rem;
   display: grid;
   gap: 0.8rem;
+  max-height: min(42rem, calc(100svh - 7rem));
   position: absolute;
   right: 0;
   width: min(24rem, calc(100vw - 2rem));
@@ -1228,29 +1229,60 @@ a {
   }
 
   .floating-chat-shell {
-    bottom: 1rem;
+    bottom: calc(1rem + env(safe-area-inset-bottom));
     left: 1rem;
     right: 1rem;
   }
 
   .floating-chat-panel {
-    bottom: 5rem;
+    bottom: calc(5rem + env(safe-area-inset-bottom));
     left: 0;
+    max-height: calc(100svh - 6.5rem);
     right: 0;
     width: auto;
   }
 
   .floating-chat-header {
+    gap: 0.65rem;
     flex-direction: column;
+    padding: 0.85rem 0.9rem;
   }
 
   .floating-chat-actions {
     align-items: flex-start;
     flex-direction: row;
+    width: 100%;
+  }
+
+  .floating-chat-link,
+  .floating-chat-close {
+    flex: 1 1 0;
   }
 
   .floating-chat-button {
     margin-left: auto;
+  }
+
+  .chat-shell[data-chat-mode="launcher"] {
+    padding: 0.8rem;
+  }
+
+  .chat-shell[data-chat-mode="launcher"] .chat-thread {
+    padding: 0.85rem;
+  }
+
+  .chat-shell[data-chat-mode="launcher"] .chat-chip {
+    font-size: 0.7rem;
+    padding: 0.45rem 0.7rem;
+  }
+
+  .chat-shell[data-chat-mode="launcher"] .chat-message {
+    max-width: 100%;
+    padding: 0.82rem 0.9rem;
+  }
+
+  .chat-shell[data-chat-mode="launcher"] .chat-textarea {
+    min-height: 5.25rem;
   }
 }
 

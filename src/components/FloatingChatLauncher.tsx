@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Chatbox from "@/components/Chatbox";
 
 type FloatingChatLauncherProps = {
@@ -34,6 +34,37 @@ function FloatingChatLauncherInner({
   isConfigured,
 }: FloatingChatLauncherProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const [runtimeConfigured, setRuntimeConfigured] = useState(isConfigured);
+
+  useEffect(() => {
+    let isCancelled = false;
+
+    async function loadStatus() {
+      try {
+        const response = await fetch("/api/chat/status", {
+          cache: "no-store",
+        });
+
+        if (!response.ok) {
+          return;
+        }
+
+        const payload = (await response.json()) as { configured?: boolean };
+
+        if (!isCancelled && typeof payload.configured === "boolean") {
+          setRuntimeConfigured(payload.configured);
+        }
+      } catch {
+        // Keep the server-provided fallback state if runtime status lookup fails.
+      }
+    }
+
+    void loadStatus();
+
+    return () => {
+      isCancelled = true;
+    };
+  }, []);
 
   return (
     <div className="floating-chat-shell">
@@ -45,9 +76,9 @@ function FloatingChatLauncherInner({
               <p className="floating-chat-title">Ask about {developerName}</p>
               <span
                 className="floating-chat-status"
-                data-state={isConfigured ? "live" : "error"}
+                data-state={runtimeConfigured ? "live" : "error"}
               >
-                {isConfigured ? "OpenAI live" : "Setup needed"}
+                {runtimeConfigured ? "OpenAI live" : "Setup needed"}
               </span>
             </div>
 
@@ -68,7 +99,7 @@ function FloatingChatLauncherInner({
 
           <Chatbox
             developerName={developerName}
-            isConfigured={isConfigured}
+            isConfigured={runtimeConfigured}
             mode="launcher"
           />
         </div>
