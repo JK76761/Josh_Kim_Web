@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Chatbox from "@/components/Chatbox";
 import CopyEmailButton from "@/components/CopyEmailButton";
 import HomeNavbar from "@/components/HomeNavbar";
 import ProjectCard from "@/components/ProjectCard";
@@ -23,23 +22,23 @@ export default function HomePage() {
       </section>
 
       <section id="hero" className="page-fade stagger-1 space-y-6">
-        <div className="space-y-8">
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(300px,0.95fr)] lg:items-center">
           <div className="hero-intro max-w-4xl space-y-4">
             <p className="section-kicker">{profile.location}</p>
-            <h1 className="font-display text-5xl font-semibold tracking-tight text-slate-50 sm:text-6xl">
+            <h1 className="font-display text-5xl font-semibold tracking-tight text-[var(--text-strong)] sm:text-6xl">
               {displayName}
             </h1>
-            <p className="font-display text-3xl font-medium tracking-tight text-slate-300 sm:text-4xl">
+            <p className="font-display text-3xl font-medium tracking-tight text-[var(--text-primary)] sm:text-4xl">
               Software Developer
             </p>
-            <p className="max-w-2xl text-base leading-8 text-slate-400">
+            <p className="max-w-2xl text-base leading-8 text-[var(--text-muted)]">
               Building reliable web and mobile products with Next.js, React Native,
               Node.js, and strong problem-solving across real production workflows.
             </p>
 
             <div className="flex flex-wrap gap-3 pt-2">
-              <a href="#hero-ai" className="cta-primary">
-                Try AI Assistant
+              <a href="/ai" className="cta-primary">
+                Open Full AI Page
               </a>
               <a href="#projects" className="cta-primary">
                 View Projects
@@ -54,7 +53,7 @@ export default function HomePage() {
               </a>
             </div>
 
-            <div className="flex flex-wrap gap-5 pt-3 text-sm font-semibold text-slate-400">
+            <div className="flex flex-wrap gap-5 pt-3 text-sm font-semibold text-[var(--text-muted)]">
               {socialLinks.map((item) => (
                 <a
                   key={item.label}
@@ -69,59 +68,13 @@ export default function HomePage() {
             </div>
 
             <p className="hero-proof-copy">
-              Live OpenAI assistant built into the homepage, scoped to portfolio data,
-              rate limited for abuse protection, and ready for edge bot protection on
-              the production domain.
+              The AI assistant opens as a translucent full-screen layer on first
+              visit, stays scoped to portfolio data, and is rate limited for abuse
+              protection.
             </p>
           </div>
 
-          <div className="hero-showcase-grid">
-            <div className="hero-visual-card">
-              <div className="hero-visual-head">
-                <div className="space-y-2">
-                  <p className="section-kicker">Visual Snapshot</p>
-                  <h2 className="hero-visual-title">Core stack at a glance</h2>
-                  <p className="hero-visual-copy">
-                    The visual stays visible next to the assistant so both the product
-                    feel and technical identity read in one screen.
-                  </p>
-                </div>
-
-                <div className="hero-ai-badges">
-                  <span className="hero-ai-badge">Next.js</span>
-                  <span className="hero-ai-badge">React Native</span>
-                </div>
-              </div>
-
-              <StackIconsShowcase />
-            </div>
-
-            <div id="hero-ai" className="hero-ai-feature">
-              <div className="hero-ai-feature-head">
-                <div className="space-y-3">
-                  <p className="section-kicker">Hero Feature</p>
-                  <h2 className="hero-ai-feature-title">Talk to the AI assistant</h2>
-                  <p className="hero-ai-feature-copy">
-                    Ask about projects, experience, stack choices, career direction,
-                    and how this portfolio uses AI.
-                  </p>
-                </div>
-
-                <div className="hero-ai-badges">
-                  <span className="hero-ai-badge">OpenAI</span>
-                  <span className="hero-ai-badge">Portfolio scoped</span>
-                  <span className="hero-ai-badge">Rate limited</span>
-                </div>
-              </div>
-
-              <Chatbox developerName={displayName} mode="hero" />
-
-              <p className="hero-ai-footnote">
-                The assistant is rate limited for abuse protection and designed to sit
-                behind Cloudflare bot protection on the production domain.
-              </p>
-            </div>
-          </div>
+          <StackIconsShowcase />
         </div>
       </section>
 
@@ -151,20 +104,20 @@ export default function HomePage() {
         {primaryExperience ? (
           <article className="experience-focus">
             <div className="space-y-2">
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--text-muted)]">
                 {formatDateLabel(primaryExperience.startDate)} - {formatDateLabel(primaryExperience.endDate)}
               </p>
-              <h3 className="font-display text-3xl font-semibold text-slate-100">
+              <h3 className="font-display text-3xl font-semibold text-[var(--text-strong)]">
                 Moonward Internship
               </h3>
-              <p className="text-lg font-medium text-slate-300">{primaryExperience.role}</p>
+              <p className="text-lg font-medium text-[var(--text-primary)]">{primaryExperience.role}</p>
             </div>
 
-            <p className="max-w-3xl text-sm leading-8 text-slate-400">
+            <p className="max-w-3xl text-sm leading-8 text-[var(--text-muted)]">
               {primaryExperience.summary}
             </p>
 
-            <ul className="space-y-2 text-sm leading-7 text-slate-400">
+            <ul className="space-y-2 text-sm leading-7 text-[var(--text-muted)]">
               {primaryExperience.achievements.slice(0, 3).map((achievement) => (
                 <li key={achievement}>{achievement}</li>
               ))}

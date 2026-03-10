@@ -13,7 +13,7 @@ const techIcons: TechIcon[] = [
   {
     id: "nextjs",
     label: "Next.js",
-    color: "#f8fafc",
+    color: "#202124",
     orbit: "outer",
     angle: 0,
     svg: (
@@ -32,7 +32,7 @@ const techIcons: TechIcon[] = [
   {
     id: "react",
     label: "React",
-    color: "#61dafb",
+    color: "#6f7580",
     orbit: "inner",
     angle: 48,
     svg: (
@@ -63,7 +63,7 @@ const techIcons: TechIcon[] = [
   {
     id: "typescript",
     label: "TypeScript",
-    color: "#3178c6",
+    color: "#9096a0",
     orbit: "outer",
     angle: 120,
     svg: (
@@ -82,7 +82,7 @@ const techIcons: TechIcon[] = [
   {
     id: "node",
     label: "Node.js",
-    color: "#5fa04e",
+    color: "#5c6168",
     orbit: "inner",
     angle: 182,
     svg: (
@@ -105,7 +105,7 @@ const techIcons: TechIcon[] = [
   {
     id: "react-native",
     label: "React Native",
-    color: "#8b5cf6",
+    color: "#b5b8bf",
     orbit: "outer",
     angle: 240,
     svg: (
@@ -119,7 +119,7 @@ const techIcons: TechIcon[] = [
   {
     id: "vercel",
     label: "Vercel",
-    color: "#f59e0b",
+    color: "#4d5259",
     orbit: "inner",
     angle: 304,
     svg: (

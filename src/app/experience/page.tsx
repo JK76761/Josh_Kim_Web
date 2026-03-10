@@ -23,23 +23,23 @@ export default function ExperiencePage() {
             key={item.id}
             className="line-row grid gap-4 py-7 md:grid-cols-[170px_minmax(0,1fr)]"
           >
-            <div className="space-y-2 text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
+            <div className="space-y-2 text-xs font-semibold uppercase tracking-[0.16em] text-[var(--text-muted)]">
               <p>{formatDateLabel(item.startDate)}</p>
               <p>{formatDateLabel(item.endDate)}</p>
             </div>
 
             <div className="space-y-4">
               <div className="space-y-2">
-                <h2 className="font-display text-2xl font-semibold text-slate-100">
+                <h2 className="font-display text-2xl font-semibold text-[var(--text-strong)]">
                   {item.role}
                 </h2>
-                <p className="text-sm font-medium text-slate-400">
+                <p className="text-sm font-medium text-[var(--text-primary)]">
                   {item.company} • {item.location}
                 </p>
-                <p className="max-w-3xl text-sm leading-7 text-slate-400">{item.summary}</p>
+                <p className="max-w-3xl text-sm leading-7 text-[var(--text-muted)]">{item.summary}</p>
               </div>
 
-              <ul className="space-y-2 text-sm leading-7 text-slate-400">
+              <ul className="space-y-2 text-sm leading-7 text-[var(--text-muted)]">
                 {item.achievements.map((achievement) => (
                   <li key={achievement}>{achievement}</li>
                 ))}
@@ -69,14 +69,14 @@ export default function ExperiencePage() {
               key={item.id}
               className="line-row grid gap-3 py-6 md:grid-cols-[170px_minmax(0,1fr)]"
             >
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--text-muted)]">
                 {formatDateLabel(item.startDate)} - {formatDateLabel(item.endDate)}
               </p>
               <div className="space-y-2">
-                <h3 className="font-display text-xl font-semibold text-slate-100">
+                <h3 className="font-display text-xl font-semibold text-[var(--text-strong)]">
                   {item.program}
                 </h3>
-                <p className="text-sm text-slate-400">
+                <p className="text-sm text-[var(--text-primary)]">
                   {item.institution} • {item.location}
                 </p>
               </div>

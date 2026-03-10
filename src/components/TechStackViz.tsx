@@ -57,10 +57,10 @@ export default function TechStackViz() {
         {grouped.map((group, groupIndex) => (
           <article key={group.category} className="stack-group space-y-4">
             <div className="flex items-center justify-between gap-2">
-              <h3 className="font-display text-xl font-semibold text-slate-100">
+              <h3 className="font-display text-xl font-semibold text-[var(--text-strong)]">
                 {group.category}
               </h3>
-              <span className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">
+              <span className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--text-muted)]">
                 Avg {group.averageLevel}%
               </span>
             </div>
@@ -69,8 +69,8 @@ export default function TechStackViz() {
               {group.items.map((item, itemIndex) => (
                 <li key={item.id}>
                   <div className="mb-1 flex items-center justify-between gap-2">
-                    <span className="text-sm font-medium text-slate-300">{item.name}</span>
-                    <span className="text-xs font-semibold text-slate-500">
+                    <span className="text-sm font-medium text-[var(--text-primary)]">{item.name}</span>
+                    <span className="text-xs font-semibold text-[var(--text-muted)]">
                       {levelLabel(item.level)}
                     </span>
                   </div>

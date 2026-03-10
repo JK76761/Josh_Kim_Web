@@ -9,15 +9,15 @@ export default function ProjectCard({ project }: ProjectCardProps) {
     <article className="project-card-simple">
       <div className="flex items-start justify-between gap-4">
         <div className="space-y-3">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--text-muted)]">
             {project.year}
           </p>
-          <h3 className="font-display text-2xl font-semibold text-slate-50">
+          <h3 className="font-display text-2xl font-semibold text-[var(--text-strong)]">
             {project.name}
           </h3>
         </div>
 
-        <div className="flex flex-wrap gap-4 text-sm font-semibold text-slate-300">
+        <div className="flex flex-wrap gap-4 text-sm font-semibold text-[var(--text-primary)]">
           <a
             href={project.githubUrl}
             target="_blank"
@@ -39,8 +39,8 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         </div>
       </div>
 
-      <p className="mt-4 text-sm leading-7 text-slate-400">{project.summary}</p>
-      <p className="mt-3 text-sm leading-7 text-slate-500">{project.impact}</p>
+      <p className="mt-4 text-sm leading-7 text-[var(--text-muted)]">{project.summary}</p>
+      <p className="mt-3 text-sm leading-7 text-[var(--text-primary)]">{project.impact}</p>
 
       <div className="mt-5 flex flex-wrap gap-2">
         {project.stack.map((item) => (

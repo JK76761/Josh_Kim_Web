@@ -9,7 +9,7 @@ type Message = {
 
 type ChatboxProps = {
   developerName: string;
-  mode?: "full" | "embedded" | "launcher" | "hero";
+  mode?: "full" | "embedded" | "launcher" | "hero" | "overlay";
 };
 
 type ChatPayload = {
@@ -63,9 +63,16 @@ const launcherCategories = [
   },
 ];
 
-function getIntroMessage(developerName: string, isLauncher: boolean): string {
-  if (isLauncher) {
+function getIntroMessage(
+  developerName: string,
+  mode: "full" | "embedded" | "launcher" | "hero" | "overlay",
+): string {
+  if (mode === "launcher") {
     return `Hi, I'm ${developerName}'s AI assistant. Ask about projects, stack, experience, or career focus.`;
+  }
+
+  if (mode === "overlay") {
+    return `Hi, I'm ${developerName}'s AI assistant. Ask about projects, experience, stack, or career direction.`;
   }
 
   return `Hi, I'm ${developerName}'s AI assistant. Ask about projects, experience, technical strengths, or current career focus.`;
@@ -86,8 +93,9 @@ export default function Chatbox({
   const isEmbedded = mode === "embedded";
   const isHero = mode === "hero";
   const isLauncher = mode === "launcher";
-  const suggestionItems = isLauncher ? launcherCategories : suggestedQuestions;
-  const introMessage = getIntroMessage(developerName, isLauncher);
+  const isOverlay = mode === "overlay";
+  const suggestionItems = isLauncher || isOverlay ? launcherCategories : suggestedQuestions;
+  const introMessage = getIntroMessage(developerName, mode);
   const isChatDisabled = assistantState !== "ready" || sessionDisabled;
   const canSubmit = useMemo(
     () => input.trim().length > 0 && !loading && !isChatDisabled,
@@ -211,34 +219,42 @@ export default function Chatbox({
     <section
       data-chat-mode={mode}
       className={`chat-shell ${
-        isLauncher ? "p-3 sm:p-4" : isEmbedded || isHero ? "p-4" : "p-4 sm:p-6"
+        isOverlay
+          ? "p-0"
+          : isLauncher
+            ? "p-3 sm:p-4"
+            : isEmbedded || isHero
+              ? "p-4"
+              : "p-4 sm:p-6"
       }`}
     >
-      <div className="mb-4 space-y-2">
-        {isLauncher ? (
-          <p className="chat-section-label">Quick topics</p>
+      <div className={`space-y-2 ${isOverlay ? "mb-5" : "mb-4"}`}>
+        {isLauncher || isOverlay ? (
+          <p className="chat-section-label">{isOverlay ? "Start with a topic" : "Quick topics"}</p>
         ) : null}
 
         <div className="flex flex-wrap gap-2">
           {suggestionItems.map((item) => (
-          <button
-            key={item.label}
-            type="button"
-            onClick={() => sendMessage(item.prompt)}
-            disabled={loading || isChatDisabled}
-            className={`chat-chip px-3 py-1 text-xs font-semibold ${
-              isLauncher ? "chat-chip-category" : ""
-            }`}
-          >
-            {item.label}
-          </button>
+            <button
+              key={item.label}
+              type="button"
+              onClick={() => sendMessage(item.prompt)}
+              disabled={loading || isChatDisabled}
+              className={`chat-chip px-3 py-1 text-xs font-semibold ${
+                isLauncher || isOverlay ? "chat-chip-category" : ""
+              }`}
+            >
+              {item.label}
+            </button>
           ))}
         </div>
       </div>
 
       <div
         className={`chat-thread overflow-y-auto rounded-2xl p-4 ${
-          isLauncher
+          isOverlay
+            ? "h-[min(44svh,30rem)] sm:h-[min(48svh,34rem)] sm:p-5"
+            : isLauncher
             ? "h-[220px] sm:h-[300px]"
             : isHero
               ? "h-[240px] sm:h-[260px]"
@@ -290,7 +306,7 @@ export default function Chatbox({
               }
             }
           }}
-          rows={isLauncher || isHero ? 2 : isEmbedded ? 2 : 3}
+          rows={isLauncher || isHero ? 2 : isEmbedded ? 2 : isOverlay ? 3 : 3}
           disabled={loading || isChatDisabled}
           placeholder={
             assistantState === "disabled"
@@ -305,25 +321,25 @@ export default function Chatbox({
         <div
           className={`flex gap-3 ${
             isLauncher || isHero ? "justify-end" : "items-center justify-between"
-          }`}
+          } ${isOverlay ? "flex-col items-stretch sm:flex-row sm:items-center" : ""}`}
         >
           {!isLauncher && !isHero ? (
-            <p className="text-xs text-slate-500">Shift + Enter for a new line.</p>
+            <p className="chat-helper-text">Shift + Enter for a new line.</p>
           ) : null}
           <button
             type="submit"
             disabled={!canSubmit}
-            className="rounded-full border border-cyan-300/18 bg-cyan-300/10 px-5 py-2 text-sm font-semibold text-cyan-100 transition hover:border-cyan-300/30 hover:bg-cyan-300/14 disabled:cursor-not-allowed disabled:opacity-40"
+            className="chat-send-button"
           >
             Send
           </button>
         </div>
 
         {assistantState === "checking" ? (
-          <p className="text-xs text-slate-500">Checking OpenAI setup...</p>
+          <p className="chat-helper-text">Checking OpenAI setup...</p>
         ) : null}
-        {statusMessage ? <p className="text-xs text-amber-200">{statusMessage}</p> : null}
-        {error ? <p className="text-xs text-rose-300">{error}</p> : null}
+        {statusMessage ? <p className="chat-status-text">{statusMessage}</p> : null}
+        {error ? <p className="chat-error-text">{error}</p> : null}
       </form>
     </section>
   );
