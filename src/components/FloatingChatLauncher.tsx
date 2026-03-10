@@ -64,6 +64,8 @@ function FloatingChatLauncherInner({
                   OpenAI Live
                 </span>
 
+                <div className="floating-chat-meta-divider" aria-hidden="true" />
+
                 <Link href="/ai" className="floating-chat-link-inline">
                   Open full page
                 </Link>
