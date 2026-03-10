@@ -23,8 +23,8 @@ export default function HomePage() {
       </section>
 
       <section id="hero" className="page-fade stagger-1 space-y-6">
-        <div className="hero-main-grid">
-          <div className="max-w-4xl space-y-4">
+        <div className="space-y-8">
+          <div className="hero-intro max-w-4xl space-y-4">
             <p className="section-kicker">{profile.location}</p>
             <h1 className="font-display text-5xl font-semibold tracking-tight text-slate-50 sm:text-6xl">
               {displayName}
@@ -75,7 +75,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="hero-side-stack">
+          <div className="hero-showcase-grid">
             <div className="hero-visual-card">
               <div className="hero-visual-head">
                 <div className="space-y-2">
