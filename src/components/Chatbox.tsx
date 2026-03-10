@@ -9,7 +9,7 @@ type Message = {
 
 type ChatboxProps = {
   developerName: string;
-  mode?: "full" | "embedded" | "launcher";
+  mode?: "full" | "embedded" | "launcher" | "hero";
 };
 
 type ChatPayload = {
@@ -84,6 +84,7 @@ export default function Chatbox({
   const [sessionDisabled, setSessionDisabled] = useState(false);
   const endOfMessagesRef = useRef<HTMLDivElement | null>(null);
   const isEmbedded = mode === "embedded";
+  const isHero = mode === "hero";
   const isLauncher = mode === "launcher";
   const suggestionItems = isLauncher ? launcherCategories : suggestedQuestions;
   const introMessage = getIntroMessage(developerName, isLauncher);
@@ -210,7 +211,7 @@ export default function Chatbox({
     <section
       data-chat-mode={mode}
       className={`chat-shell ${
-        isLauncher ? "p-3 sm:p-4" : isEmbedded ? "p-4" : "p-4 sm:p-6"
+        isLauncher ? "p-3 sm:p-4" : isEmbedded || isHero ? "p-4" : "p-4 sm:p-6"
       }`}
     >
       <div className="mb-4 space-y-2">
@@ -239,7 +240,9 @@ export default function Chatbox({
         className={`chat-thread overflow-y-auto rounded-2xl p-4 ${
           isLauncher
             ? "h-[220px] sm:h-[300px]"
-            : isEmbedded
+            : isHero
+              ? "h-[240px] sm:h-[260px]"
+              : isEmbedded
               ? "h-[360px]"
               : "h-[460px] sm:p-5"
         }`}
@@ -287,7 +290,7 @@ export default function Chatbox({
               }
             }
           }}
-          rows={isLauncher ? 2 : isEmbedded ? 2 : 3}
+          rows={isLauncher || isHero ? 2 : isEmbedded ? 2 : 3}
           disabled={loading || isChatDisabled}
           placeholder={
             assistantState === "disabled"
@@ -301,10 +304,10 @@ export default function Chatbox({
 
         <div
           className={`flex gap-3 ${
-            isLauncher ? "justify-end" : "items-center justify-between"
+            isLauncher || isHero ? "justify-end" : "items-center justify-between"
           }`}
         >
-          {!isLauncher ? (
+          {!isLauncher && !isHero ? (
             <p className="text-xs text-slate-500">Shift + Enter for a new line.</p>
           ) : null}
           <button

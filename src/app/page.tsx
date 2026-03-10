@@ -23,7 +23,7 @@ export default function HomePage() {
       </section>
 
       <section id="hero" className="page-fade stagger-1 space-y-6">
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(340px,1.1fr)] lg:items-start">
+        <div className="hero-main-grid">
           <div className="max-w-4xl space-y-4">
             <p className="section-kicker">{profile.location}</p>
             <h1 className="font-display text-5xl font-semibold tracking-tight text-slate-50 sm:text-6xl">
@@ -75,46 +75,53 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div id="hero-ai" className="hero-ai-feature">
-            <div className="hero-ai-feature-head">
-              <div className="space-y-3">
-                <p className="section-kicker">Hero Feature</p>
-                <h2 className="hero-ai-feature-title">Talk to the AI assistant</h2>
-                <p className="hero-ai-feature-copy">
-                  Ask about projects, experience, stack choices, career direction, and
-                  how this portfolio uses AI.
-                </p>
+          <div className="hero-side-stack">
+            <div className="hero-visual-card">
+              <div className="hero-visual-head">
+                <div className="space-y-2">
+                  <p className="section-kicker">Visual Snapshot</p>
+                  <h2 className="hero-visual-title">Core stack at a glance</h2>
+                  <p className="hero-visual-copy">
+                    The visual stays visible next to the assistant so both the product
+                    feel and technical identity read in one screen.
+                  </p>
+                </div>
+
+                <div className="hero-ai-badges">
+                  <span className="hero-ai-badge">Next.js</span>
+                  <span className="hero-ai-badge">React Native</span>
+                </div>
               </div>
 
-              <div className="hero-ai-badges">
-                <span className="hero-ai-badge">OpenAI</span>
-                <span className="hero-ai-badge">Portfolio scoped</span>
-                <span className="hero-ai-badge">Rate limited</span>
-              </div>
+              <StackIconsShowcase />
             </div>
 
-            <Chatbox developerName={displayName} mode="embedded" />
+            <div id="hero-ai" className="hero-ai-feature">
+              <div className="hero-ai-feature-head">
+                <div className="space-y-3">
+                  <p className="section-kicker">Hero Feature</p>
+                  <h2 className="hero-ai-feature-title">Talk to the AI assistant</h2>
+                  <p className="hero-ai-feature-copy">
+                    Ask about projects, experience, stack choices, career direction,
+                    and how this portfolio uses AI.
+                  </p>
+                </div>
 
-            <p className="hero-ai-footnote">
-              The assistant is rate limited for abuse protection. Additional bot
-              protection can be layered at the edge when the custom domain is proxied.
-            </p>
+                <div className="hero-ai-badges">
+                  <span className="hero-ai-badge">OpenAI</span>
+                  <span className="hero-ai-badge">Portfolio scoped</span>
+                  <span className="hero-ai-badge">Rate limited</span>
+                </div>
+              </div>
+
+              <Chatbox developerName={displayName} mode="hero" />
+
+              <p className="hero-ai-footnote">
+                The assistant is rate limited for abuse protection and designed to sit
+                behind Cloudflare bot protection on the production domain.
+              </p>
+            </div>
           </div>
-        </div>
-      </section>
-
-      <section className="page-fade stagger-2 section-block space-y-8">
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(320px,1.1fr)] lg:items-center">
-          <div className="space-y-4">
-            <p className="section-kicker">Core Stack</p>
-            <h2 className="section-title">Readable engineering focus</h2>
-            <p className="section-copy max-w-2xl">
-              The homepage now leads with the AI assistant, while Joshua Kim&apos;s
-              stack and engineering focus stay visible in a cleaner secondary section.
-            </p>
-          </div>
-
-          <StackIconsShowcase />
         </div>
       </section>
 
