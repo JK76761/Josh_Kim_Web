@@ -1,0 +1,60 @@
+[
+  {
+    "id": "moonward",
+    "company": "Moonward",
+    "role": "Software Developer (Internship)",
+    "location": "Brisbane",
+    "startDate": "2026-02",
+    "endDate": "Present",
+    "summary": "Independently developed full-stack product features across web and mobile platforms.",
+    "achievements": [
+      "Designed and developed full-stack features across Next.js web and React Native/Expo mobile applications.",
+      "Engineered Node.js backend services and RESTful APIs, including database schema design and frontend integration via TanStack Query.",
+      "Owned end-to-end module delivery from architecture and UI implementation to Vercel deployment.",
+      "Diagnosed and resolved authentication and access-control issues through root-cause analysis."
+    ],
+    "technologies": ["Next.js", "React Native", "Expo", "Node.js", "TypeScript", "TanStack Query", "Vercel"]
+  },
+  {
+    "id": "industry-capstone",
+    "company": "Junior Ranger Academy Placement Platform",
+    "role": "Technical Systems Analyst (Industry Capstone Project)",
+    "location": "Brisbane",
+    "startDate": "2025-06",
+    "endDate": "Present",
+    "summary": "Analysed real-world stakeholder requirements and improved system reliability through structured assessments.",
+    "achievements": [
+      "Analysed system requirements and investigated integration-related technical issues.",
+      "Identified workflow bottlenecks and provided structured technical assessments to improve reliability.",
+      "Documented architecture decisions, technical risks, and maintainability considerations."
+    ],
+    "technologies": ["Systems Analysis", "Technical Documentation", "Troubleshooting", "Stakeholder Communication"]
+  },
+  {
+    "id": "mistaboo",
+    "company": "MistaBoo",
+    "role": "Restaurant Operations Team Member",
+    "location": "Brisbane",
+    "startDate": "2024-03",
+    "endDate": "2025-09",
+    "summary": "Maintained service stability and team coordination in high-pressure operations.",
+    "achievements": [
+      "Coordinated communication between front-of-house and kitchen teams to maintain workflow stability under pressure."
+    ],
+    "technologies": ["Operations", "Team Coordination", "Customer Service"]
+  },
+  {
+    "id": "mokkoji",
+    "company": "Mokkoji",
+    "role": "Restaurant Operations Team Member",
+    "location": "Brisbane",
+    "startDate": "2023-06",
+    "endDate": "2024-02",
+    "summary": "Delivered customer-facing operations in a fast-paced environment.",
+    "achievements": [
+      "Managed front-of-house operations and customer service.",
+      "Collaborated closely with kitchen staff to ensure smooth coordination and timely service delivery."
+    ],
+    "technologies": ["Operations", "Collaboration", "Customer Service"]
+  }
+]

@@ -1,0 +1,86 @@
+[
+  {
+    "id": "nextjs",
+    "name": "Next.js",
+    "category": "Frontend",
+    "level": 5
+  },
+  {
+    "id": "react",
+    "name": "React",
+    "category": "Frontend",
+    "level": 5
+  },
+  {
+    "id": "typescript",
+    "name": "TypeScript",
+    "category": "Frontend",
+    "level": 5
+  },
+  {
+    "id": "react-native",
+    "name": "React Native",
+    "category": "Mobile",
+    "level": 4
+  },
+  {
+    "id": "expo",
+    "name": "Expo",
+    "category": "Mobile",
+    "level": 4
+  },
+  {
+    "id": "nodejs",
+    "name": "Node.js",
+    "category": "Backend",
+    "level": 4
+  },
+  {
+    "id": "rest",
+    "name": "RESTful APIs",
+    "category": "Backend",
+    "level": 4
+  },
+  {
+    "id": "tanstack-query",
+    "name": "TanStack Query",
+    "category": "Backend",
+    "level": 4
+  },
+  {
+    "id": "auth-troubleshooting",
+    "name": "Authentication Troubleshooting",
+    "category": "Systems & Support",
+    "level": 5
+  },
+  {
+    "id": "diagnostics",
+    "name": "System Diagnostics",
+    "category": "Systems & Support",
+    "level": 4
+  },
+  {
+    "id": "root-cause",
+    "name": "Root Cause Analysis",
+    "category": "Systems & Support",
+    "level": 5
+  },
+  {
+    "id": "vercel",
+    "name": "Vercel",
+    "category": "Dev Tools",
+    "level": 4
+  },
+  {
+    "id": "jira",
+    "name": "Jira",
+    "category": "Dev Tools",
+    "level": 4
+  },
+  {
+    "id": "github",
+    "name": "GitHub",
+    "category": "Dev Tools",
+    "level": 5
+  }
+]

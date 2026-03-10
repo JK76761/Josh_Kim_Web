@@ -1,0 +1,26 @@
+[
+  {
+    "id": "nbm-forum-app",
+    "name": "NBM Forum App",
+    "summary": "Mobile forum application designed and built independently during internship work.",
+    "description": "Solely designed and built a mobile forum app using Expo and React Native with TypeScript, including component architecture, navigation flow, and API integration in a production environment.",
+    "stack": ["Expo", "React Native", "TypeScript", "REST APIs"],
+    "githubUrl": "https://github.com/JK76761/NBM_TEST",
+    "liveUrl": "",
+    "year": "2026",
+    "featured": true,
+    "impact": "Delivered end-to-end ownership from architecture to implementation for internship product modules."
+  },
+  {
+    "id": "pokepokedex",
+    "name": "PokéPokédex",
+    "summary": "Interactive Pokédex web app with server-rendered pages and live API data.",
+    "description": "Developed a Pokédex web app using Next.js and React with TypeScript, integrating live data from PokéAPI and deploying on Vercel with server-side rendering for responsive data loading.",
+    "stack": ["Next.js", "React", "TypeScript", "REST API", "Vercel"],
+    "githubUrl": "https://github.com/JK76761/pokepokedex",
+    "liveUrl": "https://pokepokedex-nine.vercel.app/",
+    "year": "2025",
+    "featured": true,
+    "impact": "Shipped a complete full-stack portfolio project with production deployment and real-time data integration."
+  }
+]

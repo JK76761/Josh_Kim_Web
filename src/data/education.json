@@ -1,0 +1,18 @@
+[
+  {
+    "id": "qut-bcs",
+    "institution": "Queensland University of Technology",
+    "program": "Bachelor of Computer Science",
+    "startDate": "2024-02",
+    "endDate": "2026-06 (Expected)",
+    "location": "Brisbane"
+  },
+  {
+    "id": "qut-diploma",
+    "institution": "Queensland University of Technology",
+    "program": "Diploma of IT",
+    "startDate": "2023-09",
+    "endDate": "2024-02",
+    "location": "Brisbane"
+  }
+]

@@ -1,0 +1,36 @@
+{
+  "name": "Joshua Kim (JIO)",
+  "headline": "IT Support-Focused Full-Stack Developer",
+  "tagline": "Computer Science student building reliable web and mobile products with strong systems troubleshooting skills.",
+  "bio": "IT Support-focused Computer Science student with hands-on experience in full-stack application support, network troubleshooting, and system diagnostics. Experienced with Next.js, React, React Native, Expo, and Node.js, and comfortable resolving authentication and access-related issues in live environments.",
+  "location": "Brisbane, Australia",
+  "email": "zio76152583@gmail.com",
+  "phone": "0406 091 445",
+  "availability": "Open to graduate software engineering and IT support opportunities.",
+  "socials": {
+    "github": "https://github.com/JK76761",
+    "linkedin": "https://www.linkedin.com/in/jio-kim-416301314"
+  },
+  "skills": [
+    "Next.js",
+    "React",
+    "React Native",
+    "Expo",
+    "TypeScript",
+    "Node.js",
+    "RESTful APIs",
+    "TanStack Query",
+    "Root Cause Analysis",
+    "Authentication Troubleshooting",
+    "System Diagnostics",
+    "Git",
+    "GitHub",
+    "Jira",
+    "Vercel"
+  ],
+  "highlights": [
+    "Built full-stack features independently across Next.js web and React Native mobile applications.",
+    "Diagnosed and resolved authentication and access-control issues in production environments.",
+    "Designed and shipped projects end-to-end from architecture to deployment."
+  ]
+}

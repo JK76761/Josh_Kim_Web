@@ -1,65 +1,188 @@
-import Image from "next/image";
+import Link from "next/link";
+import CopyEmailButton from "@/components/CopyEmailButton";
+import HomeNavbar from "@/components/HomeNavbar";
+import ProjectCard from "@/components/ProjectCard";
+import StackIconsShowcase from "@/components/StackIconsShowcase";
+import { experience, featuredProjects, profile } from "@/lib/data";
+import { formatDateLabel, getDisplayName } from "@/lib/format";
 
-export default function Home() {
+const socialLinks = [
+  { label: "GitHub", href: profile.socials.github },
+  { label: "LinkedIn", href: profile.socials.linkedin },
+];
+
+export default function HomePage() {
+  const primaryExperience = experience[0];
+  const displayName = getDisplayName(profile.name);
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="space-y-16">
+      <section className="page-fade stagger-1">
+        <HomeNavbar />
+      </section>
+
+      <section id="hero" className="page-fade stagger-1 space-y-6">
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(280px,0.9fr)] lg:items-center">
+          <div className="max-w-4xl space-y-4">
+            <p className="section-kicker">{profile.location}</p>
+            <h1 className="font-display text-5xl font-semibold tracking-tight text-slate-50 sm:text-6xl">
+              {displayName}
+            </h1>
+            <p className="font-display text-3xl font-medium tracking-tight text-slate-300 sm:text-4xl">
+              Software Developer
+            </p>
+            <p className="max-w-2xl text-base leading-8 text-slate-400">
+              Building reliable web and mobile products with Next.js, React Native,
+              Node.js, and strong problem-solving across real production workflows.
+            </p>
+
+            <div className="flex flex-wrap gap-3 pt-2">
+              <a href="#projects" className="cta-primary">
+                View Projects
+              </a>
+              <a
+                href="/Joshua_Kim_CV_final.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="cta-secondary"
+              >
+                View CV
+              </a>
+            </div>
+
+            <div className="hero-ai-inline">
+              <span className="hero-ai-dot" aria-hidden="true" />
+              <p className="hero-ai-copy">
+                AI assistant available from the chat icon for live questions about projects,
+                experience, and technical stack.
+              </p>
+            </div>
+
+            <div className="flex flex-wrap gap-5 pt-3 text-sm font-semibold text-slate-400">
+              {socialLinks.map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="link-inline"
+                >
+                  {item.label}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <StackIconsShowcase />
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      <section id="projects" className="page-fade stagger-2 section-block space-y-8">
+        <div className="section-heading">
+          <p className="section-kicker">Projects</p>
+          <h2 className="section-title">Selected Projects</h2>
         </div>
-      </main>
+
+        <div className="grid gap-5 md:grid-cols-2">
+          {featuredProjects.map((project) => (
+            <ProjectCard key={project.id} project={project} />
+          ))}
+        </div>
+
+        <Link href="/projects" className="link-inline text-sm font-semibold">
+          View full archive
+        </Link>
+      </section>
+
+      <section id="experience" className="page-fade stagger-2 section-block space-y-8">
+        <div className="section-heading">
+          <p className="section-kicker">Experience</p>
+          <h2 className="section-title">Experience</h2>
+        </div>
+
+        {primaryExperience ? (
+          <article className="experience-focus">
+            <div className="space-y-2">
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
+                {formatDateLabel(primaryExperience.startDate)} - {formatDateLabel(primaryExperience.endDate)}
+              </p>
+              <h3 className="font-display text-3xl font-semibold text-slate-100">
+                Moonward Internship
+              </h3>
+              <p className="text-lg font-medium text-slate-300">{primaryExperience.role}</p>
+            </div>
+
+            <p className="max-w-3xl text-sm leading-8 text-slate-400">
+              {primaryExperience.summary}
+            </p>
+
+            <ul className="space-y-2 text-sm leading-7 text-slate-400">
+              {primaryExperience.achievements.slice(0, 3).map((achievement) => (
+                <li key={achievement}>{achievement}</li>
+              ))}
+            </ul>
+          </article>
+        ) : null}
+
+        <Link href="/experience" className="link-inline text-sm font-semibold">
+          View full experience
+        </Link>
+      </section>
+
+      <section id="contact" className="page-fade stagger-3 section-block space-y-8">
+        <div className="section-heading">
+          <h2 className="section-title">Contact</h2>
+        </div>
+
+        <div className="contact-grid">
+          <div className="space-y-5">
+            <p className="section-copy max-w-xl">
+              Email is the fastest way to reach me for graduate software engineering,
+              IT support, or internship-related opportunities.
+            </p>
+
+            <a href={`mailto:${profile.email}`} className="contact-email">
+              {profile.email}
+            </a>
+
+            <div className="flex flex-wrap gap-3">
+              <CopyEmailButton email={profile.email} />
+              <a
+                href="/Joshua_Kim_CV_final.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="cta-secondary"
+              >
+                View CV
+              </a>
+            </div>
+          </div>
+
+          <div className="contact-rail">
+            <div className="contact-row">
+              <span className="contact-row-label">Location</span>
+              <span className="contact-row-value">{profile.location}</span>
+            </div>
+            <div className="contact-row">
+              <span className="contact-row-label">Availability</span>
+              <span className="contact-row-value">{profile.availability}</span>
+            </div>
+            {socialLinks.map((item) => (
+              <div key={item.label} className="contact-row">
+                <span className="contact-row-label">{item.label}</span>
+                <a
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="contact-row-link"
+                >
+                  Open
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
