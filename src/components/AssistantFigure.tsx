@@ -28,171 +28,312 @@ export default function AssistantFigure({
         role="presentation"
       >
         <defs>
-          <linearGradient id="assistant-card-skin" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#ffe0c9" />
-            <stop offset="100%" stopColor="#f4b993" />
+          <radialGradient
+            id="assistant-card-skin"
+            cx="0"
+            cy="0"
+            r="1"
+            gradientTransform="translate(144 72) rotate(42) scale(112 128)"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop offset="0%" stopColor="#ffe9d7" />
+            <stop offset="58%" stopColor="#ffcda9" />
+            <stop offset="100%" stopColor="#e1a27d" />
+          </radialGradient>
+          <radialGradient
+            id="assistant-card-face-shadow"
+            cx="0"
+            cy="0"
+            r="1"
+            gradientTransform="translate(184 118) rotate(135) scale(82 98)"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop offset="0%" stopColor="#cf8e6b" stopOpacity="0.34" />
+            <stop offset="100%" stopColor="#cf8e6b" stopOpacity="0" />
+          </radialGradient>
+          <linearGradient
+            id="assistant-card-jacket"
+            x1="106"
+            y1="132"
+            x2="214"
+            y2="214"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop offset="0%" stopColor="#353940" />
+            <stop offset="52%" stopColor="#1f2328" />
+            <stop offset="100%" stopColor="#111418" />
           </linearGradient>
-          <linearGradient id="assistant-card-jacket" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#2a2d32" />
-            <stop offset="100%" stopColor="#1a1d21" />
+          <linearGradient
+            id="assistant-card-jacket-shine"
+            x1="126"
+            y1="136"
+            x2="178"
+            y2="208"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop offset="0%" stopColor="#6a707a" stopOpacity="0.22" />
+            <stop offset="100%" stopColor="#6a707a" stopOpacity="0" />
           </linearGradient>
-          <linearGradient id="assistant-card-shirt" x1="0" y1="0" x2="1" y2="1">
+          <linearGradient
+            id="assistant-card-shirt"
+            x1="132"
+            y1="134"
+            x2="188"
+            y2="198"
+            gradientUnits="userSpaceOnUse"
+          >
             <stop offset="0%" stopColor="#ffffff" />
             <stop offset="100%" stopColor="#e9edf3" />
           </linearGradient>
-          <linearGradient id="assistant-card-tie" x1="0" y1="0" x2="0" y2="1">
+          <linearGradient
+            id="assistant-card-tie"
+            x1="164"
+            y1="136"
+            x2="164"
+            y2="196"
+            gradientUnits="userSpaceOnUse"
+          >
             <stop offset="0%" stopColor="#f25f4c" />
             <stop offset="100%" stopColor="#cb4738" />
           </linearGradient>
-          <linearGradient id="assistant-card-laptop" x1="0" y1="0" x2="1" y2="1">
+          <linearGradient
+            id="assistant-card-laptop"
+            x1="72"
+            y1="166"
+            x2="212"
+            y2="236"
+            gradientUnits="userSpaceOnUse"
+          >
             <stop offset="0%" stopColor="#fdfdfd" />
-            <stop offset="100%" stopColor="#dfe4ea" />
+            <stop offset="100%" stopColor="#d9dee6" />
           </linearGradient>
-          <linearGradient id="assistant-card-screen" x1="0" y1="0" x2="1" y2="1">
+          <linearGradient
+            id="assistant-card-screen"
+            x1="90"
+            y1="176"
+            x2="186"
+            y2="220"
+            gradientUnits="userSpaceOnUse"
+          >
             <stop offset="0%" stopColor="#fafbfd" />
-            <stop offset="100%" stopColor="#eef2f6" />
+            <stop offset="100%" stopColor="#ebf1f7" />
           </linearGradient>
-          <linearGradient id="assistant-card-hair" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#22252a" />
-            <stop offset="100%" stopColor="#0f1012" />
+          <linearGradient
+            id="assistant-card-laptop-edge"
+            x1="88"
+            y1="225"
+            x2="216"
+            y2="246"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop offset="0%" stopColor="#cfd5dd" />
+            <stop offset="100%" stopColor="#b6bcc5" />
+          </linearGradient>
+          <radialGradient
+            id="assistant-card-hair"
+            cx="0"
+            cy="0"
+            r="1"
+            gradientTransform="translate(138 42) rotate(34) scale(108 94)"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop offset="0%" stopColor="#353a42" />
+            <stop offset="56%" stopColor="#1c2025" />
+            <stop offset="100%" stopColor="#090a0c" />
+          </radialGradient>
+          <linearGradient
+            id="assistant-card-hair-shine"
+            x1="120"
+            y1="40"
+            x2="172"
+            y2="86"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop offset="0%" stopColor="#868d99" stopOpacity="0.28" />
+            <stop offset="100%" stopColor="#868d99" stopOpacity="0" />
           </linearGradient>
           <linearGradient id="assistant-card-badge" x1="0" y1="0" x2="1" y2="1">
             <stop offset="0%" stopColor="#5aa3ff" />
             <stop offset="100%" stopColor="#2d78d8" />
           </linearGradient>
+          <filter
+            id="assistant-card-shadow"
+            x="76"
+            y="28"
+            width="170"
+            height="228"
+            filterUnits="userSpaceOnUse"
+            colorInterpolationFilters="sRGB"
+          >
+            <feDropShadow dx="0" dy="16" stdDeviation="14" floodColor="#1a1d21" floodOpacity="0.18" />
+          </filter>
+          <filter
+            id="assistant-card-badge-shadow"
+            x="28"
+            y="20"
+            width="272"
+            height="122"
+            filterUnits="userSpaceOnUse"
+            colorInterpolationFilters="sRGB"
+          >
+            <feDropShadow dx="0" dy="8" stdDeviation="8" floodColor="#336cb8" floodOpacity="0.2" />
+          </filter>
         </defs>
 
         <ellipse className="assistant-character-shadow" cx="160" cy="254" rx="84" ry="16" />
 
-        <g className="assistant-character-badge assistant-character-badge-left">
-          <rect x="36" y="72" width="46" height="34" rx="12" fill="url(#assistant-card-badge)" />
+        <g filter="url(#assistant-card-badge-shadow)">
+          <g className="assistant-character-badge assistant-character-badge-left">
+            <rect x="34" y="70" width="48" height="36" rx="12" fill="url(#assistant-card-badge)" />
+            <path d="M48 88h20M58 80v16" stroke="#ffffff" strokeLinecap="round" strokeWidth="3" />
+          </g>
+
+          <g className="assistant-character-badge assistant-character-badge-top">
+            <rect x="72" y="26" width="62" height="40" rx="14" fill="url(#assistant-card-badge)" />
+            <text
+              x="103"
+              y="52"
+              fill="#ffffff"
+              fontFamily="Arial, sans-serif"
+              fontSize="16"
+              fontWeight="700"
+              textAnchor="middle"
+            >
+              JS
+            </text>
+          </g>
+
+          <g className="assistant-character-badge assistant-character-badge-right">
+            <rect x="240" y="42" width="50" height="38" rx="12" fill="url(#assistant-card-badge)" />
+            <path
+              d="m254 61 7-7m0 0 7 7m-7-7v14m-7-7h14"
+              stroke="#ffffff"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2.8"
+            />
+          </g>
+
+          <g className="assistant-character-badge assistant-character-badge-small">
+            <circle cx="58" cy="126" r="18" fill="url(#assistant-card-badge)" />
+            <text
+              x="58"
+              y="132"
+              fill="#ffffff"
+              fontFamily="Arial, sans-serif"
+              fontSize="12"
+              fontWeight="700"
+              textAnchor="middle"
+            >
+              AI
+            </text>
+          </g>
+        </g>
+
+        <g className="assistant-character-figure" filter="url(#assistant-card-shadow)">
           <path
-            d="M48 89h22M58 81v16"
-            stroke="#ffffff"
-            strokeLinecap="round"
-            strokeWidth="3"
-          />
-        </g>
-
-        <g className="assistant-character-badge assistant-character-badge-top">
-          <rect x="74" y="28" width="58" height="38" rx="14" fill="url(#assistant-card-badge)" />
-          <text
-            x="103"
-            y="52"
-            fill="#ffffff"
-            fontFamily="Arial, sans-serif"
-            fontSize="16"
-            fontWeight="700"
-            textAnchor="middle"
-          >
-            JS
-          </text>
-        </g>
-
-        <g className="assistant-character-badge assistant-character-badge-right">
-          <rect x="242" y="44" width="48" height="36" rx="12" fill="url(#assistant-card-badge)" />
-          <path
-            d="m256 62 8-8m0 0 8 8m-8-8v16m-8-8h16"
-            stroke="#ffffff"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2.8"
-          />
-        </g>
-
-        <g className="assistant-character-badge assistant-character-badge-small">
-          <circle cx="58" cy="126" r="18" fill="url(#assistant-card-badge)" />
-          <text
-            x="58"
-            y="132"
-            fill="#ffffff"
-            fontFamily="Arial, sans-serif"
-            fontSize="12"
-            fontWeight="700"
-            textAnchor="middle"
-          >
-            AI
-          </text>
-        </g>
-
-        <g className="assistant-character-figure">
-          <path
-            d="M118 140c9-11 24-17 42-17 18 0 33 6 42 17l20 54H98l20-54Z"
+            d="M122 136c10-11 24-17 38-17 20 0 35 6 45 17l18 53H97l25-53Z"
             fill="url(#assistant-card-jacket)"
           />
           <path
-            d="M138 136h44l-9 50h-26l-9-50Z"
+            d="M126 141c7-6 20-11 34-11 15 0 29 5 36 11l-8 48h-56l-6-48Z"
             fill="url(#assistant-card-shirt)"
           />
+          <path d="M156 137h8l10 55h-28l10-55Z" fill="url(#assistant-card-tie)" />
           <path
-            d="M159 137h9l8 53h-25l8-53Z"
-            fill="url(#assistant-card-tie)"
+            d="M119 142c11 2 19 8 25 15l-16 31-28-6 19-40Z"
+            fill="url(#assistant-card-jacket-shine)"
+          />
+          <path
+            d="M201 145c-9 2-17 8-23 15l15 29 24-7-16-37Z"
+            fill="rgba(255,255,255,0.05)"
           />
 
-          <rect
-            className="assistant-character-laptop"
-            x="74"
-            y="168"
-            width="144"
-            height="62"
-            rx="18"
-            fill="url(#assistant-card-laptop)"
-          />
-          <rect
-            className="assistant-character-screen"
-            x="86"
-            y="178"
-            width="120"
-            height="40"
-            rx="12"
-            fill="url(#assistant-card-screen)"
-          />
-          <circle cx="146" cy="198" r="4.5" fill="#c2c8d0" />
-
           <path
-            d="M120 158c5-12 14-16 25-16h8c11 0 20 4 25 16l9 22h-76l9-22Z"
-            fill="url(#assistant-card-jacket)"
-          />
-          <path
-            d="M97 174c10-12 20-19 31-21l18 17-18 11-31-7Z"
+            d="M106 162c10-14 23-20 37-20l17 19-18 14-46 2 10-15Z"
             fill="url(#assistant-card-skin)"
           />
           <path
-            d="M223 174c-10-12-20-19-31-21l-18 17 18 11 31-7Z"
+            d="M214 162c-10-14-23-20-37-20l-17 19 18 14 46 2-10-15Z"
             fill="url(#assistant-card-skin)"
           />
-
-          <rect x="141" y="110" width="38" height="30" rx="15" fill="url(#assistant-card-skin)" />
-          <ellipse cx="160" cy="86" rx="46" ry="50" fill="url(#assistant-card-skin)" />
           <path
-            d="M117 83c0-34 23-52 50-52 19 0 35 9 44 25-6-3-13-4-22-4-22 0-34 13-41 31l-31 0Z"
+            d="M139 167c-14 4-27 10-41 19l3 10c17 0 31-2 43-8l-5-21Z"
+            fill="#f0b188"
+          />
+          <path
+            d="M181 167c14 4 27 10 41 19l-3 10c-17 0-31-2-43-8l5-21Z"
+            fill="#f0b188"
+          />
+
+          <g className="assistant-character-laptop">
+            <path
+              d="M75 171c0-8 7-15 15-15h111c9 0 16 7 16 15v44c0 9-7 16-16 16H90c-8 0-15-7-15-16v-44Z"
+              fill="url(#assistant-card-laptop)"
+            />
+            <path
+              d="M88 180c0-5 4-10 10-10h95c6 0 10 5 10 10v28c0 6-4 10-10 10H98c-6 0-10-4-10-10v-28Z"
+              className="assistant-character-screen"
+              fill="url(#assistant-card-screen)"
+            />
+            <path
+              d="M72 225h148l-8 13c-2 4-6 6-11 6H92c-5 0-9-2-11-6l-9-13Z"
+              fill="url(#assistant-card-laptop-edge)"
+            />
+            <path
+              d="M103 183h79c6 0 10 5 10 10v6c-24-10-54-7-89 10v-16c0-5 4-10 10-10Z"
+              fill="rgba(255,255,255,0.32)"
+            />
+            <circle cx="147" cy="200" r="4.5" fill="#c2c8d0" />
+          </g>
+
+          <path
+            d="M142 108h36v33c0 10-8 18-18 18s-18-8-18-18v-33Z"
+            fill="url(#assistant-card-skin)"
+          />
+          <ellipse cx="160" cy="86" rx="47" ry="51" fill="url(#assistant-card-skin)" />
+          <ellipse cx="173" cy="101" rx="37" ry="38" fill="url(#assistant-card-face-shadow)" />
+          <path
+            d="M116 84c0-35 24-55 52-55 22 0 39 11 47 29-10-5-20-7-31-7-17 0-31 5-41 16-10 11-17 18-27 17V84Z"
             fill="url(#assistant-card-hair)"
           />
           <path
-            d="M119 84c6-21 20-36 43-36 15 0 28 6 37 17-7 0-16 2-26 6-17 8-32 14-54 13Z"
+            d="M118 80c11-21 30-34 51-34 12 0 24 4 35 13-18 4-33 15-47 27-10 9-25 13-39 10V80Z"
             fill="url(#assistant-card-hair)"
           />
-          <circle cx="114" cy="90" r="7" fill="url(#assistant-card-skin)" />
-          <circle cx="206" cy="90" r="7" fill="url(#assistant-card-skin)" />
-
-          <circle cx="145" cy="90" r="18" stroke="#4d4640" strokeWidth="4" fill="#ffffff" fillOpacity="0.16" />
-          <circle cx="176" cy="90" r="18" stroke="#4d4640" strokeWidth="4" fill="#ffffff" fillOpacity="0.16" />
-          <path d="M163 90h-5" stroke="#4d4640" strokeWidth="4" strokeLinecap="round" />
-          <path d="M128 82h12M181 82h12" stroke="#4d4640" strokeLinecap="round" strokeWidth="3" />
-
-          <ellipse className="assistant-character-eye" cx="145" cy="92" rx="3.5" ry="4.5" fill="#26282d" />
-          <ellipse className="assistant-character-eye" cx="176" cy="92" rx="3.5" ry="4.5" fill="#26282d" />
           <path
-            d="M152 112c4 4 13 4 17 0"
-            stroke="#9b5744"
-            strokeLinecap="round"
-            strokeWidth="3"
+            d="M129 52c12-10 24-15 39-15 10 0 19 3 28 8-8 1-14 4-23 9-16 8-26 9-44 6v-8Z"
+            fill="url(#assistant-card-hair-shine)"
           />
+          <circle cx="114" cy="92" r="7" fill="url(#assistant-card-skin)" />
+          <circle cx="206" cy="92" r="7" fill="url(#assistant-card-skin)" />
+
+          <circle cx="145" cy="91" r="19" stroke="#473e39" strokeWidth="4" fill="#ffffff" fillOpacity="0.16" />
+          <circle cx="176" cy="91" r="19" stroke="#473e39" strokeWidth="4" fill="#ffffff" fillOpacity="0.16" />
+          <path d="M162 91h-4" stroke="#473e39" strokeWidth="4" strokeLinecap="round" />
+          <path d="M128 81.5h13M180.5 81.5h13" stroke="#473e39" strokeLinecap="round" strokeWidth="3" />
+
+          <ellipse className="assistant-character-eye" cx="145" cy="93" rx="3.6" ry="4.8" fill="#26282d" />
+          <ellipse className="assistant-character-eye" cx="176" cy="93" rx="3.6" ry="4.8" fill="#26282d" />
+          <circle cx="143.7" cy="91.3" r="0.9" fill="#ffffff" />
+          <circle cx="174.7" cy="91.3" r="0.9" fill="#ffffff" />
           <path
-            d="M154 95c0 6 1 9 6 9"
+            d="M153 95c0 7 2 11 7 11"
             stroke="#d58a68"
             strokeLinecap="round"
             strokeWidth="2.4"
+          />
+          <path
+            d="M151 114c4 5 15 5 19 0"
+            stroke="#98523d"
+            strokeLinecap="round"
+            strokeWidth="3.2"
+          />
+          <path
+            d="M132 108c3 2 6 3 9 3M179 111c2 0 5-1 8-3"
+            stroke="#efb39b"
+            strokeLinecap="round"
+            strokeWidth="4"
           />
         </g>
       </svg>

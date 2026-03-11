@@ -1376,11 +1376,19 @@ a {
   transition: transform 180ms ease, filter 180ms ease;
 }
 
+.assistant-presence[data-active="true"] .assistant-character-figure {
+  animation-duration: 2.4s;
+}
+
 .assistant-presence[data-active="true"] .assistant-character-badge-left,
 .assistant-presence[data-active="true"] .assistant-character-badge-top,
 .assistant-presence[data-active="true"] .assistant-character-badge-right,
 .assistant-presence[data-active="true"] .assistant-character-badge-small {
   animation-duration: 1.8s;
+}
+
+.assistant-presence[data-active="true"] .assistant-character-laptop {
+  transform: translateY(-1px);
 }
 
 .assistant-presence[data-active="true"] .assistant-character-screen {
