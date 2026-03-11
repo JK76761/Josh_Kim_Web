@@ -232,16 +232,32 @@ export default function AssistantFigure({
 
         <g className="assistant-character-figure" filter="url(#assistant-card-shadow)">
           <path
-            d="M122 136c10-11 24-17 38-17 20 0 35 6 45 17l18 53H97l25-53Z"
+            d="M117 136c12-12 27-18 43-18 22 0 38 6 49 18l17 55H95l22-55Z"
             fill="url(#assistant-card-jacket)"
           />
           <path
-            d="M126 141c7-6 20-11 34-11 15 0 29 5 36 11l-8 48h-56l-6-48Z"
+            d="M133 140c8-6 18-9 28-9 11 0 21 3 29 9l-6 49h-46l-5-49Z"
             fill="url(#assistant-card-shirt)"
+          />
+          <path
+            d="M146 139h11l-8 18-17 16-7-25c6-5 14-9 21-9Z"
+            fill="url(#assistant-card-jacket)"
+          />
+          <path
+            d="M174 139h-11l8 18 17 16 7-25c-6-5-14-9-21-9Z"
+            fill="url(#assistant-card-jacket)"
+          />
+          <path
+            d="M150 139h10l-5 11-12 13-8-15c4-5 9-8 15-9Z"
+            fill="#ffffff"
+          />
+          <path
+            d="M170 139h-10l5 11 12 13 8-15c-4-5-9-8-15-9Z"
+            fill="#ffffff"
           />
           <path d="M156 137h8l10 55h-28l10-55Z" fill="url(#assistant-card-tie)" />
           <path
-            d="M119 142c11 2 19 8 25 15l-16 31-28-6 19-40Z"
+            d="M120 143c10 3 18 8 24 15l-15 31-26-6 17-40Z"
             fill="url(#assistant-card-jacket-shine)"
           />
           <path
@@ -250,20 +266,28 @@ export default function AssistantFigure({
           />
 
           <path
-            d="M106 162c10-14 23-20 37-20l17 19-18 14-46 2 10-15Z"
+            d="M100 170c10-13 22-19 35-20l19 14-16 19-42 2 4-15Z"
+            fill="url(#assistant-card-jacket)"
+          />
+          <path
+            d="M220 170c-10-13-22-19-35-20l-19 14 16 19 42 2-4-15Z"
+            fill="url(#assistant-card-jacket)"
+          />
+          <path
+            d="M116 179c12-4 24-3 34 2l-8 12c-11 3-22 5-32 4l-1-8 7-10Z"
             fill="url(#assistant-card-skin)"
           />
           <path
-            d="M214 162c-10-14-23-20-37-20l-17 19 18 14 46 2-10-15Z"
+            d="M204 179c-12-4-24-3-34 2l8 12c11 3 22 5 32 4l1-8-7-10Z"
             fill="url(#assistant-card-skin)"
           />
           <path
-            d="M139 167c-14 4-27 10-41 19l3 10c17 0 31-2 43-8l-5-21Z"
-            fill="#f0b188"
+            d="M118 182c9 0 18 2 27 6l-5 7c-9 1-18 1-26-1l4-12Z"
+            fill="rgba(224,162,125,0.46)"
           />
           <path
-            d="M181 167c14 4 27 10 41 19l-3 10c-17 0-31-2-43-8l5-21Z"
-            fill="#f0b188"
+            d="M202 182c-9 0-18 2-27 6l5 7c9 1 18 1 26-1l-4-12Z"
+            fill="rgba(224,162,125,0.46)"
           />
 
           <g className="assistant-character-laptop">
